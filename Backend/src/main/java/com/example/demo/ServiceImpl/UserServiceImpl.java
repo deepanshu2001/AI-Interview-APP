@@ -1,0 +1,60 @@
+package com.example.demo.ServiceImpl;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.DTOS.UserRequestDTO;
+import com.example.demo.DTOS.UserResponseDTO;
+import com.example.demo.Entities.User;
+import com.example.demo.Repositories.UserRepository;
+import com.example.demo.Services.UserService;
+
+import lombok.AllArgsConstructor;
+
+
+@Service
+@AllArgsConstructor
+public class UserServiceImpl implements UserService {
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    public UserResponseDTO login(UserRequestDTO userRequestDTO){
+        User user=userRepository.findByEmail(userRequestDTO.getEmail());
+       if (user != null && passwordEncoder.matches(userRequestDTO.getPassword(), user.getPassword())) {
+            UserResponseDTO userResponseDTO=new UserResponseDTO();
+            userResponseDTO.setId(user.getId());
+            userResponseDTO.setEmail(user.getEmail());
+            userResponseDTO.setName(user.getName());
+            return userResponseDTO;
+        }
+        else{
+            return null;
+        }
+    }
+    public UserResponseDTO register(UserRequestDTO userRequestDTO){
+        User user=new User();
+        user.setName(userRequestDTO.getName());
+        user.setEmail(userRequestDTO.getEmail());
+        user.setPassword(passwordEncoder.encode(userRequestDTO.getPassword()));
+        
+        userRepository.save(user);
+        UserResponseDTO userResponseDTO=new UserResponseDTO();
+        userResponseDTO.setId(user.getId());
+        userResponseDTO.setEmail(user.getEmail());
+        userResponseDTO.setName(user.getName());
+        return userResponseDTO;
+    }
+    public UserResponseDTO getByuserId(Long id){
+        User user=userRepository.findById(id).orElse(null);
+        if(user!=null){
+            UserResponseDTO userResponseDTO=new UserResponseDTO();
+            userResponseDTO.setId(user.getId());
+            userResponseDTO.setEmail(user.getEmail());
+            userResponseDTO.setName(user.getName());
+            return userResponseDTO;
+        }
+        else{
+            return null;
+        }
+    }
+}
+
