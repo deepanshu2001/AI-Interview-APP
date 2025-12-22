@@ -16,7 +16,7 @@ public class DemoApplication {
 	}
 	public static void main(String[] args) {
 		Dotenv dotenv=Dotenv.load();
-		System.setProperty("GROKGROK_API_KEY",dotenv.get("GROK_API_KEY"));
+		System.setProperty("GROK_API_KEY",dotenv.get("GROK_API_KEY"));
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
