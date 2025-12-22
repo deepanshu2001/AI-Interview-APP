@@ -7,9 +7,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ChatClientConfig {
-    @Bean("EvaluationClient")
+    @Bean("DSAEvaluationClient")
     ChatClient chatClientEvaluation(ChatClient.Builder builder){
-        return builder
+        return builder.defaultOptions(ChatOptions.builder().model("llama-3.1-8b-instant").build())
                 .defaultSystem("""
                     You are an expert DSA (Data Structures & Algorithms) interviewer and evaluator with deep knowledge of:
                     - Algorithm design and analysis
