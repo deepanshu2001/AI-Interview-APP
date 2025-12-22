@@ -10,9 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.DTOS.UserRequestDTO;
 import com.example.demo.DTOS.UserResponseDTO;
+import com.example.demo.Services.JWTService;
 import com.example.demo.Services.UserService;
 
-import jakarta.websocket.server.PathParam;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
+
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -20,12 +23,25 @@ import lombok.AllArgsConstructor;
 @RequestMapping("/api/users")
 public class UserController {
     private final UserService userService;
+    private final JWTService jwtService;
     //settup for login and register
-    @GetMapping("/login")
-    public ResponseEntity<UserResponseDTO> login(@RequestBody UserRequestDTO userRequestDTO){
-        UserResponseDTO userResponseDTO=userService.login(userRequestDTO);
-        return ResponseEntity.ok(userResponseDTO);
-    }
+    @PostMapping("/login")  
+public ResponseEntity<UserResponseDTO> login(@RequestBody UserRequestDTO userRequestDTO,
+                                              HttpServletResponse response) { 
+    UserResponseDTO userResponseDTO = userService.login(userRequestDTO);
+    
+    // Create and set JWT cookie
+    Cookie jwtCookie = new Cookie("jwt",jwtService.generateJwtToken(userRequestDTO.getEmail(), userRequestDTO.getId()));
+    jwtCookie.setHttpOnly(true);
+    jwtCookie.setSecure(false); // Set to true in production with HTTPS
+    jwtCookie.setPath("/");
+    jwtCookie.setMaxAge(7 * 24 * 60 * 60); // 7 days
+    jwtCookie.setAttribute("SameSite", "Lax");
+    
+    response.addCookie(jwtCookie);
+    
+    return ResponseEntity.ok(userResponseDTO);
+}
     @PostMapping("/register")
     public ResponseEntity<UserResponseDTO> register(@RequestBody UserRequestDTO userRequestDTO){
         UserResponseDTO userResponseDTO=userService.register(userRequestDTO);

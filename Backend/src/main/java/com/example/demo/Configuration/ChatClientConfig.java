@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ChatClientConfig {
+    //chat client for dsa evaluation based on user code
     @Bean("DSAEvaluationClient")
     ChatClient chatClientEvaluation(ChatClient.Builder builder){
         return builder.defaultOptions(ChatOptions.builder().model("llama-3.1-8b-instant").build())
@@ -64,6 +65,7 @@ public class ChatClientConfig {
                     """)
                 .build();
     }
+    //chat client to fetch dsa question using LLM
     @Bean("LeetcodeClient")
     ChatClient chatClientLeetcodeProblem(ChatClient.Builder builder){
         return builder.defaultOptions(ChatOptions.builder().model("llama-3.1-8b-instant").build())
