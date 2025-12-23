@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import com.example.demo.DTOS.UserRequestDTO;
 import com.example.demo.DTOS.UserResponseDTO;
 import com.example.demo.Entities.User;
+import com.example.demo.Exceptions.UserAlreadyExist;
+import com.example.demo.Exceptions.UserNotFoundException;
 import com.example.demo.Repositories.UserRepository;
 import com.example.demo.Services.UserService;
 
@@ -19,6 +21,9 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     public UserResponseDTO login(UserRequestDTO userRequestDTO){
         User user=userRepository.findByEmail(userRequestDTO.getEmail());
+        if(user==null){
+            throw new UserNotFoundException("User with email does not exist");
+        }
        if (user != null && passwordEncoder.matches(userRequestDTO.getPassword(), user.getPassword())) {
             UserResponseDTO userResponseDTO=new UserResponseDTO();
             userResponseDTO.setId(user.getId());
@@ -31,6 +36,9 @@ public class UserServiceImpl implements UserService {
         }
     }
     public UserResponseDTO register(UserRequestDTO userRequestDTO){
+        if(userRepository.findByEmail(userRequestDTO.getEmail())!=null){
+            throw new UserAlreadyExist("Email Already exists!!!");
+        }
         User user=new User();
         user.setName(userRequestDTO.getName());
         user.setEmail(userRequestDTO.getEmail());
