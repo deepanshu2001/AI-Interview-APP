@@ -1,5 +1,6 @@
 package com.example.demo.Controllers;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,8 +45,12 @@ public ResponseEntity<UserResponseDTO> login(@RequestBody UserRequestDTO userReq
 }
     @PostMapping("/register")
     public ResponseEntity<UserResponseDTO> register(@RequestBody UserRequestDTO userRequestDTO){
-        UserResponseDTO userResponseDTO=userService.register(userRequestDTO);
-        return ResponseEntity.ok(userResponseDTO);
+      
+          UserResponseDTO userResponseDTO=userService.register(userRequestDTO);
+          return ResponseEntity.ok(userResponseDTO);
+       
+       
+        
     }
     @GetMapping("/{id}")
     public ResponseEntity<UserResponseDTO> getuserById(@PathVariable("id") Long id){

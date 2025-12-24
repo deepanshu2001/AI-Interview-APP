@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { Eye, EyeOff, Mail, Lock, User } from 'lucide-react';
+import { Eye, EyeOff, Mail, Lock, User, AlertCircle, CheckCircle, X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const navigate = useNavigate();
+  const API_URL = import.meta.env.VITE_API_URL;
+  
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -11,25 +15,59 @@ export default function Register() {
     confirmPassword: ''
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [notification, setNotification] = useState({ show: false, type: '', message: '' });
+
+  // Show notification function
+  const showNotification = (type, message) => {
+    setNotification({ show: true, type, message });
+    // Auto-hide after 5 seconds
+    setTimeout(() => {
+      setNotification({ show: false, type: '', message: '' });
+    }, 5000);
+  };
 
   const handleSubmit = async () => {
+    // Validation
     if (!formData.fullName || !formData.email || !formData.password || !formData.confirmPassword) {
-      alert('Please fill in all fields');
+      showNotification('error', 'Please fill in all fields');
       return;
     }
     
     if (formData.password !== formData.confirmPassword) {
-      alert('Passwords do not match');
+      showNotification('error', 'Passwords do not match');
       return;
     }
     
     setIsLoading(true);
     
-    // Simulate registration process
-    setTimeout(() => {
+    try {
+      const response = await fetch(`${API_URL}/api/users/register`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.fullName,
+          email: formData.email,
+          password: formData.password
+        })
+      });
+      console.log(response);
+      const data = await response.json();
+      
+      if (response.ok) {
+        showNotification('success', 'Registration successful! Redirecting to login...');
+        setTimeout(() => navigate('/'), 2000);
+      } else{
+        showNotification('error', data.Message || 'Registration failed. Please try again.');
+        
+      }
+    } catch (error) {
+      console.error('Registration error:', error);
+      showNotification('error', 'Network error. Please check your connection and try again.');
+    } finally {
       setIsLoading(false);
-      alert('Registration functionality would be implemented here!');
-    }, 1500);
+    }
   };
 
   const handleKeyPress = (e) => {
@@ -45,6 +83,34 @@ export default function Register() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
+        {/* Notification Banner */}
+        {notification.show && (
+          <div className={`mb-4 p-4 rounded-xl shadow-lg flex items-start gap-3 animate-slide-down ${
+            notification.type === 'error' 
+              ? 'bg-red-50 border border-red-200' 
+              : 'bg-green-50 border border-green-200'
+          }`}>
+            {notification.type === 'error' ? (
+              <AlertCircle className="h-5 w-5 text-red-500 flex-shrink-0 mt-0.5" />
+            ) : (
+              <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+            )}
+            <p className={`flex-1 text-sm font-medium ${
+              notification.type === 'error' ? 'text-red-800' : 'text-green-800'
+            }`}>
+              {notification.message}
+            </p>
+            <button
+              onClick={() => setNotification({ show: false, type: '', message: '' })}
+              className={`flex-shrink-0 ${
+                notification.type === 'error' ? 'text-red-400 hover:text-red-600' : 'text-green-400 hover:text-green-600'
+              }`}
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+        )}
+
         {/* Register Card */}
         <div className="bg-white rounded-3xl shadow-2xl p-8 backdrop-blur-lg">
           {/* Logo/Brand */}
@@ -166,25 +232,6 @@ export default function Register() {
               </div>
             </div>
 
-            {/* Terms & Conditions */}
-            <div className="flex items-start">
-              <input
-                id="terms"
-                type="checkbox"
-                className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded mt-1"
-              />
-              <label htmlFor="terms" className="ml-2 block text-sm text-gray-700">
-                I agree to the{' '}
-                <button className="text-indigo-600 hover:text-indigo-500 font-medium">
-                  Terms of Service
-                </button>{' '}
-                and{' '}
-                <button className="text-indigo-600 hover:text-indigo-500 font-medium">
-                  Privacy Policy
-                </button>
-              </label>
-            </div>
-
             {/* Submit Button */}
             <button
               onClick={handleSubmit}
@@ -239,7 +286,7 @@ export default function Register() {
           {/* Sign In Link */}
           <p className="mt-8 text-center text-sm text-gray-600">
             Already have an account?{' '}
-            <button className="font-medium text-indigo-600 hover:text-indigo-500 transition-colors">
+            <button onClick={() => navigate("/")} className="font-medium text-indigo-600 hover:text-indigo-500 transition-colors cursor-pointer">
               Sign in
             </button>
           </p>
@@ -250,6 +297,8 @@ export default function Register() {
           © 2024 AlgoAce. All rights reserved.
         </p>
       </div>
+
+      
     </div>
   );
 }

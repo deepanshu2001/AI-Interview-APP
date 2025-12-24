@@ -6,8 +6,10 @@ import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+@ControllerAdvice
 public class GlobalExceptionHandler {
     private ResponseEntity<Object> buildErrorResponse(String message, HttpStatus status) {
         Map<String, Object> errorResponseMap = new HashMap<>();
@@ -21,5 +23,9 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<Object> HandleUserNotFoundException(UserNotFoundException ex) {
         return buildErrorResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler(UserAlreadyExist.class)
+    public ResponseEntity<Object> HandleUserAlreadyExist(UserAlreadyExist ex){
+        return buildErrorResponse(ex.getMessage(),HttpStatus.BAD_REQUEST);
     }
 }

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff, Mail, Lock } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-
+  const navigate=useNavigate();
   const handleSubmit = async () => {
     if (!email || !password) {
       alert('Please fill in all fields');
@@ -170,7 +171,7 @@ export default function Login() {
           {/* Sign Up Link */}
           <p className="mt-8 text-center text-sm text-gray-600">
             Don't have an account?{' '}
-            <button className="font-medium text-indigo-600 hover:text-indigo-500 transition-colors">
+            <button onClick={()=>navigate('/register')} className="font-medium text-indigo-600 hover:text-indigo-500 transition-colors cursor-pointer">
               Sign up for free
             </button>
           </p>
