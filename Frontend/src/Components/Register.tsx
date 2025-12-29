@@ -52,7 +52,7 @@ export default function Register() {
           password: formData.password
         })
       });
-      console.log(response);
+     
       const data = await response.json();
       
       if (response.ok) {
@@ -235,7 +235,7 @@ export default function Register() {
             {/* Submit Button */}
             <button
               onClick={handleSubmit}
-              disabled={isLoading}
+              disabled={isLoading || !formData.fullName || !formData.email || !formData.password || !formData.confirmPassword}
               className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-3 px-4 rounded-xl font-medium hover:from-indigo-700 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transform transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg"
             >
               {isLoading ? (
