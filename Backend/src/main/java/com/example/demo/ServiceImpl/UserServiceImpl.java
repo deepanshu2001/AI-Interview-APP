@@ -1,5 +1,6 @@
 package com.example.demo.ServiceImpl;
 
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -63,6 +64,14 @@ public class UserServiceImpl implements UserService {
         else{
             return null;
         }
+    }
+    public UserResponseDTO findUser(UserDetails userDetails){
+        UserResponseDTO userResponseDTO=new UserResponseDTO();
+        User user=userRepository.findByEmail(userDetails.getUsername());
+        userResponseDTO.setEmail(user.getEmail());
+        userResponseDTO.setName(user.getName());
+        userResponseDTO.setId(user.getId());
+        return userResponseDTO;
     }
 }
 

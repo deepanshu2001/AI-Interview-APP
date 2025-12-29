@@ -2,6 +2,8 @@ package com.example.demo.Controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -56,6 +58,11 @@ public ResponseEntity<UserResponseDTO> login(@RequestBody UserRequestDTO userReq
     public ResponseEntity<UserResponseDTO> getuserById(@PathVariable("id") Long id){
         UserResponseDTO userResponseDTO=userService.getByuserId(id);
         return ResponseEntity.ok(userResponseDTO);
+    }
+    @GetMapping("/me")
+    public ResponseEntity<?> getUserDetails(@AuthenticationPrincipal UserDetails userDetails){
+        UserResponseDTO userResponseDTO=userService.findUser(userDetails);
+        return new ResponseEntity<>(userResponseDTO,HttpStatus.OK);
     }
 
 }
