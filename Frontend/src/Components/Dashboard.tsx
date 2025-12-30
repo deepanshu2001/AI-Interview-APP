@@ -1,49 +1,104 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Code, Brain, Trophy, TrendingUp, Calendar, Clock, CheckCircle, Target, Award, Flame, Star, BarChart } from 'lucide-react';
+import { useAuth } from '../context/AuthContext'; // Import the hook
+import { useNavigate } from 'react-router-dom';
 
 export default function Dashboard() {
-  const [user] = useState({
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-    totalInterviews: 42,
-    lastDSAScore: 85,
-    lastBehavioralScore: 92,
-    totalDSARounds: 28,
-    totalBehavioralRounds: 14
+  const { user, loading, logout } = useAuth(); // Get user data from context
+  const navigate = useNavigate();
+  
+  const [dashboardData, setDashboardData] = useState({
+    totalInterviews: 0,
+    lastDSAScore: 0,
+    lastBehavioralScore: 0,
+    totalDSARounds: 0,
+    totalBehavioralRounds: 0
   });
+
+  // Fetch user's dashboard data
+  useEffect(() => {
+    const fetchDashboardData = async () => {
+      if (!user) return;
+
+      try {
+        const response = await fetch(`http://localhost:8080/api/dashboard/${user.id}`, {
+          method: 'GET',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setDashboardData(data);
+        }
+      } catch (error) {
+        console.error('Error fetching dashboard data:', error);
+      }
+    };
+
+    fetchDashboardData();
+  }, [user]);
+
+  const handleLogout = async () => {
+    await logout();
+    navigate('/');
+  };
+
+  // Show loading state
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Show error if no user (shouldn't happen with ProtectedRoute)
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <p className="text-gray-600">No user data available</p>
+      </div>
+    );
+  }
 
   const stats = [
     {
       title: 'Total Interviews',
-      value: user.totalInterviews,
+      value: dashboardData.totalInterviews,
       icon: Trophy,
       color: 'from-blue-500 to-indigo-600',
       bgColor: 'from-blue-50 to-indigo-50'
     },
     {
       title: 'Last DSA Score',
-      value: `${user.lastDSAScore}%`,
+      value: `${dashboardData.lastDSAScore}%`,
       icon: Code,
       color: 'from-green-500 to-emerald-600',
       bgColor: 'from-green-50 to-emerald-50'
     },
     {
       title: 'Last Behavioral Score',
-      value: `${user.lastBehavioralScore}%`,
+      value: `${dashboardData.lastBehavioralScore}%`,
       icon: Brain,
       color: 'from-purple-500 to-pink-600',
       bgColor: 'from-purple-50 to-pink-50'
     },
     {
       title: 'Total DSA Rounds',
-      value: user.totalDSARounds,
+      value: dashboardData.totalDSARounds,
       icon: BarChart,
       color: 'from-orange-500 to-red-600',
       bgColor: 'from-orange-50 to-red-50'
     },
     {
       title: 'Total Behavioral Rounds',
-      value: user.totalBehavioralRounds,
+      value: dashboardData.totalBehavioralRounds,
       icon: Star,
       color: 'from-yellow-500 to-amber-600',
       bgColor: 'from-yellow-50 to-amber-50'
@@ -78,12 +133,20 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Welcome Section */}
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">
-            Welcome back, {user.name.split(' ')[0]}! 👋
-          </h1>
-          <p className="text-gray-600">Let's continue your interview preparation journey</p>
+        {/* Header with Logout */}
+        <div className="flex justify-between items-center mb-8">
+          <div>
+            <h1 className="text-4xl font-bold text-gray-900 mb-2">
+              Welcome back, {user.name.split(' ')[0]}! 👋
+            </h1>
+            <p className="text-gray-600">Let's continue your interview preparation journey</p>
+          </div>
+          <button
+            onClick={handleLogout}
+            className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
+          >
+            Logout
+          </button>
         </div>
 
         {/* Stats Grid */}
@@ -138,28 +201,23 @@ export default function Dashboard() {
                 <div className="p-4 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl border border-green-100">
                   <div className="flex items-center justify-between mb-2">
                     <Code className="h-5 w-5 text-green-600" />
-                    <span className="text-2xl font-bold text-green-600">{user.lastDSAScore}%</span>
+                    <span className="text-2xl font-bold text-green-600">{dashboardData.lastDSAScore}%</span>
                   </div>
                   <p className="text-sm text-gray-600 font-medium">DSA Performance</p>
-                  <p className="text-xs text-gray-500 mt-1">{user.totalDSARounds} rounds completed</p>
+                  <p className="text-xs text-gray-500 mt-1">{dashboardData.totalDSARounds} rounds completed</p>
                 </div>
                 <div className="p-4 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl border border-purple-100">
                   <div className="flex items-center justify-between mb-2">
                     <Brain className="h-5 w-5 text-purple-600" />
-                    <span className="text-2xl font-bold text-purple-600">{user.lastBehavioralScore}%</span>
+                    <span className="text-2xl font-bold text-purple-600">{dashboardData.lastBehavioralScore}%</span>
                   </div>
                   <p className="text-sm text-gray-600 font-medium">Behavioral Performance</p>
-                  <p className="text-xs text-gray-500 mt-1">{user.totalBehavioralRounds} rounds completed</p>
+                  <p className="text-xs text-gray-500 mt-1">{dashboardData.totalBehavioralRounds} rounds completed</p>
                 </div>
               </div>
             </div>
           </div>
-
-      
-         
         </div>
-
-       
       </div>
     </div>
   );

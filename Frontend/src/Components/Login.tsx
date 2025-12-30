@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff, Mail, Lock, AlertCircle, CheckCircle, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext'; // Import useAuth
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -8,13 +9,12 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [notification, setNotification] = useState({ show: false, type: '', message: '' });
-  const API_URL = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
+  const { login } = useAuth(); // Use the login function from AuthContext
 
   // Show notification function
   const showNotification = (type, message) => {
     setNotification({ show: true, type, message });
-    // Auto-hide after 2 seconds
     setTimeout(() => {
       setNotification({ show: false, type: '', message: '' });
     }, 2000);
@@ -29,32 +29,15 @@ export default function Login() {
     setIsLoading(true);
     
     try {
-      const response = await fetch(`${API_URL}/api/users/login`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password
-        })
-      });
-     
-      const data = await response.json();
+      // Use the login function from AuthContext
+      await login(email, password);
       
-      if (response.ok) {
-        showNotification('success', 'Login successful! Redirecting to dashboard...');
-        // Store token if provided
-        if (data.token) {
-          localStorage.setItem('token', data.token);
-        }
-        setTimeout(() => navigate('/dashboard'), 2000);
-      } else {
-        showNotification('error', data.Message || 'Login failed. Please check your credentials.');
-      }
+      showNotification('success', 'Login successful! Redirecting to dashboard...');
+      setTimeout(() => navigate('/dashboard'), 1000);
+      
     } catch (error) {
       console.error('Login error:', error);
-      showNotification('error', 'Network error. Please check your connection and try again.');
+      showNotification('error', 'Invalid credentials. Please try again.');
     } finally {
       setIsLoading(false);
     }

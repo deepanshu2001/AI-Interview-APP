@@ -4,7 +4,7 @@ import { Menu, X, Code, Brain, Trophy, User, LogOut, Settings } from 'lucide-rea
 // Header Component
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
@@ -39,34 +39,7 @@ export function Header() {
 
           {/* Desktop Profile Menu */}
           <div className="hidden md:flex items-center space-x-4">
-            <div className="relative">
-              <button
-                onClick={() => setIsProfileOpen(!isProfileOpen)}
-                className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:from-indigo-700 hover:to-purple-700 transition-all duration-200 shadow-md"
-              >
-                <User className="h-5 w-5" />
-                <span className="font-medium">Profile</span>
-              </button>
-
-              {/* Profile Dropdown */}
-              {isProfileOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-2 border border-gray-100">
-                  <a href="#" className="flex items-center space-x-2 px-4 py-2 text-gray-700 hover:bg-indigo-50 transition-colors">
-                    <User className="h-4 w-4" />
-                    <span>My Profile</span>
-                  </a>
-                  <a href="#" className="flex items-center space-x-2 px-4 py-2 text-gray-700 hover:bg-indigo-50 transition-colors">
-                    <Settings className="h-4 w-4" />
-                    <span>Settings</span>
-                  </a>
-                  <hr className="my-2 border-gray-200" />
-                  <a href="#" className="flex items-center space-x-2 px-4 py-2 text-red-600 hover:bg-red-50 transition-colors">
-                    <LogOut className="h-4 w-4" />
-                    <span>Logout</span>
-                  </a>
-                </div>
-              )}
-            </div>
+           
           </div>
 
           {/* Mobile Menu Button */}
@@ -99,10 +72,7 @@ export function Header() {
                 <span className="font-medium">Leaderboard</span>
               </a>
               <hr className="border-gray-200" />
-              <a href="#" className="flex items-center space-x-2 px-4 py-2 text-gray-700 hover:bg-indigo-50 rounded-lg transition-colors">
-                <User className="h-5 w-5" />
-                <span className="font-medium">My Profile</span>
-              </a>
+              
               <a href="#" className="flex items-center space-x-2 px-4 py-2 text-gray-700 hover:bg-indigo-50 rounded-lg transition-colors">
                 <Settings className="h-5 w-5" />
                 <span className="font-medium">Settings</span>

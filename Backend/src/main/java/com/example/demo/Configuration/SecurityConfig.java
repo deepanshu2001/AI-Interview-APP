@@ -53,7 +53,7 @@ public class SecurityConfig {
         http.cors(cors -> cors.configurationSource(corsConfigurationSource()));
         
         http.authorizeHttpRequests((requests) -> requests
-                .requestMatchers("/api/users/login", "/api/users/register").permitAll()
+                .requestMatchers("/api/users/login", "/api/users/register","/api/users/logout").permitAll()
                 .requestMatchers("api/dsa-problem").permitAll()
                 .anyRequest().authenticated());
         
