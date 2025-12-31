@@ -54,7 +54,7 @@ public class SecurityConfig {
         
         http.authorizeHttpRequests((requests) -> requests
                 .requestMatchers("/api/users/login", "/api/users/register","/api/users/logout").permitAll()
-                .requestMatchers("api/dsa-problem").permitAll()
+                .requestMatchers("/api/dsa-problem").permitAll()
                 .anyRequest().authenticated());
         
         http.sessionManagement(session -> 

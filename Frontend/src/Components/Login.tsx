@@ -10,8 +10,10 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [notification, setNotification] = useState({ show: false, type: '', message: '' });
   const navigate = useNavigate();
-  const { login } = useAuth(); // Use the login function from AuthContext
-
+  const {user,login } = useAuth(); // Use the login function from AuthContext
+  if(user){
+    navigate("/dashboard");
+  }
   // Show notification function
   const showNotification = (type, message) => {
     setNotification({ show: true, type, message });

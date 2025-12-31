@@ -22,7 +22,7 @@ public class LeetcodeProblemFetcher {
     }
     @GetMapping("/dsa-problem")
     public ResponseEntity<?> getLeetcodeQuestion(){
-        String prompt="Pick up a random leetcode question with the appropiate response as suggested ";
+        String prompt="Pick up a random leetcode question with the appropiate response as suggested. ";
         String response=leetcodeclient.prompt().user(prompt).call().content();
         return new ResponseEntity<>(response,HttpStatus.ACCEPTED);
     }

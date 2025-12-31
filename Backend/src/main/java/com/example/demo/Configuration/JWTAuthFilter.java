@@ -40,10 +40,10 @@ public class JWTAuthFilter extends OncePerRequestFilter {
         String email = null;
 
         // Extract token from Authorization header
-        if (authHeader != null && authHeader.startsWith("Bearer ")) {
-            token = authHeader.substring(7);
-            email = jwtService.extractEmail(token);
-        }
+        // if (authHeader != null && authHeader.startsWith("Bearer ")) {
+        //     token = authHeader.substring(7);
+        //     email = jwtService.extractEmail(token);
+        // }
 
         // If no Bearer token, check cookies
         if (token == null && request.getCookies() != null) {

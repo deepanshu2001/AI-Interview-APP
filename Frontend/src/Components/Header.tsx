@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Menu, X, Code, Brain, Trophy, User, LogOut, Settings } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 // Header Component
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+  const navigate=useNavigate();
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
@@ -23,9 +24,9 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#" className="flex items-center space-x-2 text-gray-700 hover:text-indigo-600 transition-colors">
+            <a href="#" onClick={()=>navigate("/dashboard/dsa")} className="flex items-center space-x-2 text-gray-700 hover:text-indigo-600 transition-colors">
               <Code className="h-5 w-5" />
-              <span className="font-medium">DSA Practice</span>
+              <span className="font-medium">DSA</span>
             </a>
             <a href="#" className="flex items-center space-x-2 text-gray-700 hover:text-indigo-600 transition-colors">
               <Brain className="h-5 w-5" />
@@ -59,9 +60,9 @@ export function Header() {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-200">
             <div className="flex flex-col space-y-3">
-              <a href="#" className="flex items-center space-x-2 px-4 py-2 text-gray-700 hover:bg-indigo-50 rounded-lg transition-colors">
+              <a href="" onClick={()=>navigate("/dashboard/dsa")} className="flex items-center space-x-2 px-4 py-2 text-gray-700 hover:bg-indigo-50 rounded-lg transition-colors">
                 <Code className="h-5 w-5" />
-                <span className="font-medium">DSA Practice</span>
+                <span className="font-medium">DSA</span>
               </a>
               <a href="#" className="flex items-center space-x-2 px-4 py-2 text-gray-700 hover:bg-indigo-50 rounded-lg transition-colors">
                 <Brain className="h-5 w-5" />

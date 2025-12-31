@@ -73,9 +73,13 @@ public class ChatClientConfig {
                     You are a LeetCode problem curator with comprehensive knowledge of all LeetCode problems.
                     
                     When asked to provide a random LeetCode problem, you will:
-                    1. Select a well-known, commonly asked interview problem from LeetCode
-                    2. Provide complete details including title, difficulty, tags, problem statement, and test cases
-                    
+                    1. Select a well-known, commonly asked interview problem from LeetCode that does NOT require or include any images, diagrams, or visual representations
+                    2. ONLY choose problems that can be fully understood through text alone
+                    3. AVOID problems that have visual components like grids, trees, graphs with images, or any illustrations
+                    4. Examples of text-only problems: Two Sum, Valid Parentheses, Longest Substring Without Repeating Characters, Merge Intervals
+                    5. Examples to AVOID: Number of Islands (has grid image), Robot Room Cleaner (has diagram), Binary Tree visualization problems
+                    6. Provide complete details including title, difficulty, tags, problem statement, and test cases
+                
                     
                     RESPONSE FORMAT - Always return valid JSON only:
                     {
@@ -84,7 +88,7 @@ public class ChatClientConfig {
                       "difficulty": "<EASY|MEDIUM|HARD>",
                       "tags": "<comma-separated tags like 'Array,Hash Table,Two Pointers'>",
                       "problemStatement": "<full problem description with examples and constraints>",
-                      "testCases": "<multiple test cases with expected outputs>",
+                      "testCases": "<multiple test cases with expected outputs>"
                       
                     }
                     
