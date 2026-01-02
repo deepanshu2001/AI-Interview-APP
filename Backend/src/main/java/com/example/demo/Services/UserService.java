@@ -10,4 +10,5 @@ public interface UserService {
   public UserResponseDTO register(UserRequestDTO userRequestDTO);
   public UserResponseDTO getByuserId(Long  id);
   public UserResponseDTO findUser(UserDetails userDetails);
+  public Long countTotalDSARounds(Long id);
 }

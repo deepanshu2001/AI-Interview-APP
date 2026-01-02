@@ -21,7 +21,7 @@ export default function Dashboard() {
       if (!user) return;
 
       try {
-        const response = await fetch(`http://localhost:8080/api/dashboard/${user.id}`, {
+        const response = await fetch(`http://localhost:8080/api/users/interview-details/${user.id}`, {
           method: 'GET',
           credentials: 'include',
           headers: {
@@ -31,6 +31,7 @@ export default function Dashboard() {
 
         if (response.ok) {
           const data = await response.json();
+          console.log(data);
           setDashboardData(data);
         }
       } catch (error) {
@@ -75,20 +76,8 @@ export default function Dashboard() {
       color: 'from-blue-500 to-indigo-600',
       bgColor: 'from-blue-50 to-indigo-50'
     },
-    {
-      title: 'Last DSA Score',
-      value: `${dashboardData.lastDSAScore}%`,
-      icon: Code,
-      color: 'from-green-500 to-emerald-600',
-      bgColor: 'from-green-50 to-emerald-50'
-    },
-    {
-      title: 'Last Behavioral Score',
-      value: `${dashboardData.lastBehavioralScore}%`,
-      icon: Brain,
-      color: 'from-purple-500 to-pink-600',
-      bgColor: 'from-purple-50 to-pink-50'
-    },
+    
+    
     {
       title: 'Total DSA Rounds',
       value: dashboardData.totalDSARounds,
@@ -192,30 +181,7 @@ export default function Dashboard() {
             </div>
 
             {/* Performance Overview */}
-            <div className="bg-white rounded-2xl shadow-sm p-6 border border-gray-100">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-2xl font-bold text-gray-900">Performance Overview</h2>
-                <BarChart className="h-6 w-6 text-indigo-600" />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="p-4 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl border border-green-100">
-                  <div className="flex items-center justify-between mb-2">
-                    <Code className="h-5 w-5 text-green-600" />
-                    <span className="text-2xl font-bold text-green-600">{dashboardData.lastDSAScore}%</span>
-                  </div>
-                  <p className="text-sm text-gray-600 font-medium">DSA Performance</p>
-                  <p className="text-xs text-gray-500 mt-1">{dashboardData.totalDSARounds} rounds completed</p>
-                </div>
-                <div className="p-4 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl border border-purple-100">
-                  <div className="flex items-center justify-between mb-2">
-                    <Brain className="h-5 w-5 text-purple-600" />
-                    <span className="text-2xl font-bold text-purple-600">{dashboardData.lastBehavioralScore}%</span>
-                  </div>
-                  <p className="text-sm text-gray-600 font-medium">Behavioral Performance</p>
-                  <p className="text-xs text-gray-500 mt-1">{dashboardData.totalBehavioralRounds} rounds completed</p>
-                </div>
-              </div>
-            </div>
+          
           </div>
         </div>
       </div>

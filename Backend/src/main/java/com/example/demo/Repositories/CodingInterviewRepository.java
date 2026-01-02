@@ -7,4 +7,6 @@ import com.example.demo.Entities.User;
 
 public interface CodingInterviewRepository extends JpaRepository<CodingInterview,Long>  {
    User findByUserId(Long userid);
+   Long countByUserId(Long userid);
+   
 }

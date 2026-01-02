@@ -96,5 +96,24 @@ public class ChatClientConfig {
                     """)
                 .build();
     }
+    @Bean("BehavioralClient")
+    ChatClient chatClientBehaviouralProblem(ChatClient.Builder builder){
+      return builder.defaultOptions(ChatOptions.builder().model("llama-3.1-8b-instant").build())
+      .defaultSystem("""
+       You are an AI interviewer conducting the behavioral round of a software engineering interview.
+
+            Your task:
+            - When requested, return ONE well-known, commonly asked behavioral interview question.
+            - Questions must be realistic and frequently used in real interviews.
+            - Focus on Customer obsession, conflict, Invent and simplify,leadership, ownership, Are right a lot, Learn and Be Curious
+Insist on the Highest Standards,Bias for Action, Earn Trust, Dive Deep or decision-making.
+            - Few Examples are: 1. Tell me about a time you had to make a quick decision with incomplete information.
+                                2. Describe a time you identified the root cause of a problem by going deep into data or logs.
+                                3. Describe a situation where you took responsibility for a problem that wasn’t officially yours
+            - Do NOT include explanations, examples, or multiple questions.
+            - Output ONLY the question as plain text.
+      """).build();
+      
+    }
 }
 

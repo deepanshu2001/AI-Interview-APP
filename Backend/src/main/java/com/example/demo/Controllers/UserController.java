@@ -1,5 +1,8 @@
 package com.example.demo.Controllers;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -82,6 +85,16 @@ public class UserController {
     public ResponseEntity<?> getUserDetails(@AuthenticationPrincipal UserDetails userDetails) {
         UserResponseDTO userResponseDTO = userService.findUser(userDetails);
         return new ResponseEntity<>(userResponseDTO, HttpStatus.OK);
+    }
+    @GetMapping("/interview-details/{id}")
+    public ResponseEntity<?> getInterviewDetails(@PathVariable("id") Long id){
+        Long dsarounds=userService.countTotalDSARounds(id);
+        Map<String,Long> map=new HashMap<>();
+        map.put("totalInterviews",dsarounds);
+        map.put("totalDSARounds",dsarounds);
+        map.put("totalBehavioralRounds",dsarounds);
+       
+        return new ResponseEntity<>(map,HttpStatus.OK);
     }
 
 }
