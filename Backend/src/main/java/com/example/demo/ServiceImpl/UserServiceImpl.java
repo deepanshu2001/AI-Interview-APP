@@ -9,6 +9,7 @@ import com.example.demo.DTOS.UserResponseDTO;
 import com.example.demo.Entities.User;
 import com.example.demo.Exceptions.UserAlreadyExist;
 import com.example.demo.Exceptions.UserNotFoundException;
+import com.example.demo.Repositories.BehaviorInterviewRepository;
 import com.example.demo.Repositories.CodingInterviewRepository;
 import com.example.demo.Repositories.UserRepository;
 import com.example.demo.Services.UserService;
@@ -22,6 +23,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final CodingInterviewRepository codingInterviewRepository;
+    private final BehaviorInterviewRepository behaviorInterviewRepository;
     public UserResponseDTO login(UserRequestDTO userRequestDTO){
         User user=userRepository.findByEmail(userRequestDTO.getEmail());
         if(user==null){
@@ -77,6 +79,10 @@ public class UserServiceImpl implements UserService {
     }
     public Long countTotalDSARounds(Long id){
         Long cnt=codingInterviewRepository.countByUserId(id);
+        return cnt;
+    }
+    public Long countTotalBehaviourRounds(Long id){
+        Long cnt=behaviorInterviewRepository.countByUserId(id);
         return cnt;
     }
 }

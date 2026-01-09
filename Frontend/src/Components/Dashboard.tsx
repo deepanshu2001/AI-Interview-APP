@@ -31,7 +31,7 @@ export default function Dashboard() {
 
         if (response.ok) {
           const data = await response.json();
-          console.log(data);
+          
           setDashboardData(data);
         }
       } catch (error) {
@@ -170,7 +170,7 @@ export default function Dashboard() {
                   <p className="text-sm text-gray-600 text-center">Practice coding problems</p>
                 </button>
 
-                <button className="flex flex-col items-center p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl border-2 border-purple-100 hover:border-purple-300 hover:shadow-md transition-all group">
+                <button onClick={()=>navigate("/dashboard/behavioural")} className="flex flex-col items-center p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl border-2 border-purple-100 hover:border-purple-300 hover:shadow-md transition-all group">
                   <div className="p-3 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl mb-3 group-hover:scale-110 transition-transform">
                     <Brain className="h-8 w-8 text-white" />
                   </div>

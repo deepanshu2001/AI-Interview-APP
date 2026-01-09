@@ -263,11 +263,11 @@ export default function DSARoundPage() {
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-3 mt-4">
+          <div className="flex flex-wrap gap-3 mt-4 ">
             {!hasStarted && (
               <button
                 onClick={startTimer}
-                className="flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium"
+                className="flex cursor-pointer items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium"
               >
                 <Play className="w-5 h-5" />
                 Start Round

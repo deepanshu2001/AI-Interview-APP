@@ -28,7 +28,7 @@ export function Header() {
               <Code className="h-5 w-5" />
               <span className="font-medium">DSA</span>
             </a>
-            <a href="#" className="flex items-center space-x-2 text-gray-700 hover:text-indigo-600 transition-colors">
+            <a href="#" onClick={()=>navigate("/dashboard/behavioural")} className="flex items-center space-x-2 text-gray-700 hover:text-indigo-600 transition-colors">
               <Brain className="h-5 w-5" />
               <span className="font-medium">Behavioral</span>
             </a>

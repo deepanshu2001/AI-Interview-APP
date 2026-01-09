@@ -89,12 +89,17 @@ public class UserController {
     @GetMapping("/interview-details/{id}")
     public ResponseEntity<?> getInterviewDetails(@PathVariable("id") Long id){
         Long dsarounds=userService.countTotalDSARounds(id);
+        Long behaviourrounds=userService.countTotalBehaviourRounds(id);
         Map<String,Long> map=new HashMap<>();
-        map.put("totalInterviews",dsarounds);
+        map.put("totalInterviews",dsarounds+behaviourrounds);
         map.put("totalDSARounds",dsarounds);
-        map.put("totalBehavioralRounds",dsarounds);
+        map.put("totalBehavioralRounds",behaviourrounds);
        
         return new ResponseEntity<>(map,HttpStatus.OK);
     }
+    // @GetMapping("/dsa-interviews/{id}")
+    // public ResponseEntity<?> getDSAInterwies(@PathVariable("id") Long id){
+
+    // }
 
 }
