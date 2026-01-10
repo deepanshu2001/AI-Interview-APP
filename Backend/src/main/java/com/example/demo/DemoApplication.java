@@ -15,7 +15,7 @@ public class DemoApplication {
 		return new BCryptPasswordEncoder();
 	}
 	public static void main(String[] args) {
-		Dotenv dotenv=Dotenv.load();
+		Dotenv dotenv=Dotenv.configure().ignoreIfMissing().load();
 		System.setProperty("GROK_API_KEY",dotenv.get("GROK_API_KEY"));
 		System.setProperty("SECRET_KEY",dotenv.get("SECRET_KEY"));
 		SpringApplication.run(DemoApplication.class, args);
