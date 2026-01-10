@@ -14,7 +14,7 @@ export default function DSARoundPage() {
   const { user } = useAuth();
   const [feedback, setFeedback] = useState(null);
   
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     let interval = null;
