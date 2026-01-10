@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Menu, X, Code, Brain, Trophy, User, LogOut, Settings } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 // Header Component
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const {user}=useAuth();
   const navigate=useNavigate();
 
   return (
@@ -32,10 +34,11 @@ export function Header() {
               <Brain className="h-5 w-5" />
               <span className="font-medium">Behavioral</span>
             </a>
-            <a href="#" className="flex items-center space-x-2 text-gray-700 hover:text-indigo-600 transition-colors">
+            <a href="#" onClick={()=>navigate("/dashboard/interview-results")} className="flex items-center space-x-2 text-gray-700 hover:text-indigo-600 transition-colors">
               <Trophy className="h-5 w-5" />
-              <span className="font-medium">Leaderboard</span>
+              <span className="font-medium">Interview Results</span>
             </a>
+            {}
           </div>
 
           {/* Desktop Profile Menu */}

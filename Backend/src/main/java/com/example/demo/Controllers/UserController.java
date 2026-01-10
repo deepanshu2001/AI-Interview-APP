@@ -1,6 +1,7 @@
 package com.example.demo.Controllers;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.HttpStatus;
@@ -19,13 +20,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.DTOS.UserRequestDTO;
 import com.example.demo.DTOS.UserResponseDTO;
+import com.example.demo.Entities.BehaviorInterview;
+import com.example.demo.Entities.CodingInterview;
+import com.example.demo.Entities.CodingRating;
+import com.example.demo.Repositories.BehaviorInterviewRepository;
+import com.example.demo.Repositories.CodingInterviewRepository;
+import com.example.demo.Repositories.CodingRatingRepository;
 import com.example.demo.Services.JWTService;
 import com.example.demo.Services.UserService;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
+import org.springframework.transaction.annotation.Transactional;
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -34,7 +41,9 @@ import lombok.AllArgsConstructor;
 public class UserController {
     private final UserService userService;
     private final JWTService jwtService;
-    
+    private final CodingRatingRepository codingRatingRepository; 
+    private final CodingInterviewRepository codingInterviewRepository;
+    private final BehaviorInterviewRepository behaviorInterviewRepository;
     // settup for login and register
     @PostMapping("/login")
     public ResponseEntity<UserResponseDTO> login(@RequestBody UserRequestDTO userRequestDTO,
@@ -97,9 +106,22 @@ public class UserController {
        
         return new ResponseEntity<>(map,HttpStatus.OK);
     }
-    // @GetMapping("/dsa-interviews/{id}")
-    // public ResponseEntity<?> getDSAInterwies(@PathVariable("id") Long id){
-
-    // }
+    @GetMapping("/dsa-interviews/{id}")
+    @Transactional(readOnly = true)
+    public ResponseEntity<?> getDSAInterwies(@PathVariable("id") Long id){
+        List<CodingInterview> list=codingInterviewRepository.findAllByUserId(id);
+        List<Long> interviewIds = list.stream()
+        .map(CodingInterview::getId)
+        .toList();
+        List<CodingRating> ratings =
+        codingRatingRepository.findByInterviewIdIn(interviewIds);
+        return new ResponseEntity<>(ratings,HttpStatus.ACCEPTED);
+    }
+    @GetMapping("/behavior-interviews/{id}")
+    @Transactional(readOnly = true)
+    public ResponseEntity<?> getBehavioralInterviews(@PathVariable("id") Long id){
+        List<BehaviorInterview> list=behaviorInterviewRepository.findAllByUserId(id);
+        return new ResponseEntity<>(list,HttpStatus.OK);
+    }
 
 }

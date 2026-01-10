@@ -68,7 +68,7 @@ public class ChatClientConfig {
     //chat client to fetch dsa question using LLM
     @Bean("LeetcodeClient")
     ChatClient chatClientLeetcodeProblem(ChatClient.Builder builder){
-        return builder.defaultOptions(ChatOptions.builder().model("llama-3.1-8b-instant").build())
+        return builder.defaultOptions(ChatOptions.builder().model("llama-3.1-8b-instant").temperature(0.9).build())
                 .defaultSystem("""
                     You are a LeetCode problem curator with comprehensive knowledge of all LeetCode problems.
                     
@@ -98,12 +98,13 @@ public class ChatClientConfig {
     }
     @Bean("BehavioralClient")
     ChatClient chatClientBehaviouralProblem(ChatClient.Builder builder){
-      return builder.defaultOptions(ChatOptions.builder().model("llama-3.1-8b-instant").build())
+      return builder.defaultOptions(ChatOptions.builder().model("llama-3.1-8b-instant").temperature(0.9).build())
       .defaultSystem("""
        You are an AI interviewer conducting the behavioral round of a software engineering interview.
 
             Your task:
-            - When requested, return ONE well-known, commonly asked behavioral interview question.
+            - When requested, return ONE well-known, commonly asked during behavioral round of software engineering interviews behavioral interview question.
+            - The question should be open-ended, designed to assess a candidate's soft skills, problem  solving abilities, and cultural fit.
             - Questions must be realistic and frequently used in real interviews.
             - Focus on Customer obsession, conflict, Invent and simplify,leadership, ownership, Are right a lot, Learn and Be Curious
 Insist on the Highest Standards,Bias for Action, Earn Trust, Dive Deep or decision-making.

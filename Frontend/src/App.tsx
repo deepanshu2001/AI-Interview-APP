@@ -6,6 +6,7 @@ import { DashboardPage } from './Pages/DashboardPage'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import { DSARoundPage } from './Pages/DSARoundPage'
 import { BehaviouralroundPage } from './Pages/BehaviouralroundPage'
+import { InterviewResultsPage } from './Pages/InterviewResultsPage'
 
 
 
@@ -22,6 +23,7 @@ function App() {
     <Route path='/register' element={<RegisterPage/>}/>
     <Route path="/dashboard/dsa" element={<DSARoundPage/>}/>
     <Route path="/dashboard/behavioural" element={<BehaviouralroundPage/>} />
+    <Route path='/dashboard/interview-results' element={<InterviewResultsPage/>}/>
   </Routes>
   </AuthProvider>
   
