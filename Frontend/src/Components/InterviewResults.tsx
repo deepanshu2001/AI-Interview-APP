@@ -10,7 +10,7 @@ export default function InterviewResultsPage() {
   const [error, setError] = useState(null);
   const [expandedFeedback, setExpandedFeedback] = useState(new Set());
   const {user}=useAuth();
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     fetchResults();

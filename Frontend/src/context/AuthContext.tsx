@@ -61,7 +61,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setLoading(true);
     
     try {
-      const response = await fetch('http://localhost:8080/api/users/login', {
+      const response = await fetch(`${API_URL}/api/users/login`, {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -85,7 +85,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   // Logout function
   const logout = async () => {
     try {
-      await fetch('http://localhost:8080/api/users/logout', {
+      await fetch(`${API_URL}/api/users/logout`, {
         method: 'POST',
         credentials: 'include',
       });

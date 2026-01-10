@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 export default function Dashboard() {
   const { user, loading, logout } = useAuth(); // Get user data from context
   const navigate = useNavigate();
-  
+  const API_URL = import.meta.env.VITE_API_URL;
   const [dashboardData, setDashboardData] = useState({
     totalInterviews: 0,
     lastDSAScore: 0,
@@ -21,7 +21,7 @@ export default function Dashboard() {
       if (!user) return;
 
       try {
-        const response = await fetch(`http://localhost:8080/api/users/interview-details/${user.id}`, {
+        const response = await fetch(`${API_URL}/api/users/interview-details/${user.id}`, {
           method: 'GET',
           credentials: 'include',
           headers: {

@@ -22,7 +22,7 @@ export default function Behaviouralround() {
     const mediaRecorder = useRef(null);
     const {user}=useAuth();
     const chunks = useRef([]);
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+    const API_URL = import.meta.env.VITE_API_URL;
 
     const startRecording = async () => {
         try {
