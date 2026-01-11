@@ -54,10 +54,10 @@ public class UserController {
         Cookie jwtCookie = new Cookie("jwt",
                 jwtService.generateJwtToken(userRequestDTO.getEmail(), userRequestDTO.getId()));
         jwtCookie.setHttpOnly(true);
-        jwtCookie.setSecure(false); // Set to true in production with HTTPS
+        jwtCookie.setSecure(true); // Set to true in production with HTTPS
         jwtCookie.setPath("/");
         jwtCookie.setMaxAge(7 * 24 * 60 * 60); // 7 days
-        jwtCookie.setAttribute("SameSite", "Lax");
+        jwtCookie.setAttribute("SameSite", "None");
 
         response.addCookie(jwtCookie);
         
@@ -68,10 +68,10 @@ public class UserController {
     public ResponseEntity<?> logout(HttpServletResponse response){
         Cookie cookie=new Cookie("jwt", null);
         cookie.setHttpOnly(true);
-        cookie.setSecure(false);
+        cookie.setSecure(true);
         cookie.setPath("/");
         cookie.setMaxAge(0);
-        cookie.setAttribute("SameSite","Lax");
+        cookie.setAttribute("SameSite","None");
         response.addCookie(cookie);
         return new ResponseEntity<>(HttpStatus.OK);
     }
