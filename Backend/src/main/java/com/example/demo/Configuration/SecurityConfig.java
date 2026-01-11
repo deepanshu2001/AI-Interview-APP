@@ -36,7 +36,8 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOriginPatterns(List.of(
                 "http://localhost:5173",
-                "http://localhost:8080"
+                "http://localhost:8080",
+                "https://curious-caramel-ffc38a.netlify.app"
         ));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
