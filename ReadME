@@ -1,67 +1,52 @@
 # 🤖 AI Interview Prep App
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Tailwind](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Vercel](https://img.shields.io/badge/Deployed-GitHub_Pages-222?style=for-the-badge&logo=github)
 
-An intelligent platform designed to help candidates practice for job interviews using AI-driven simulations. This application generates role-specific questions and provides a realistic environment to refine your interviewing skills.
+An intelligent platform designed to help candidates practice for job interviews using AI-driven simulations. 
+
+
 
 🚀 **Live Demo:** [https://deepanshu2001.github.io/Portfolio/](https://deepanshu2001.github.io/Portfolio/)
+
+## 📖 Table of Contents
+- [Features](#-features)
+- [How It Works](#-how-it-works)
+- [Tech Stack](#-tech-stack)
+- [Installation](#-getting-started)
+- [Roadmap](#-roadmap)
 
 ---
 
 ## ✨ Features
+- **🎯 Role-Specific Prep:** Generates questions based on the specific job title you are targeting.
+- **⚡ Real-time AI Chat:** Natural language processing to simulate a back-and-forth interview.
+- **📊 Performance Insights:** Get a summary of your performance and suggested improvements.
+- **📱 Responsive UI:** Practice on your phone or desktop.
 
-* **Dynamic Question Generation:** Personalized interview questions tailored to specific job descriptions and experience levels.
-* **AI Mock Interviews:** Realistic conversational flow to simulate a live interview experience.
-* **Instant Evaluation:** (Optional: Describe if your app provides feedback on clarity, tone, or technical accuracy).
-* **Modern UI:** Clean, intuitive interface built with React and optimized for all devices.
+---
+
+## 🧠 How It Works
+1. **Input:** The user enters the job role and description.
+2. **Processing:** The app sends a structured prompt to the AI (Gemini/OpenAI).
+3. **Simulation:** The AI generates a series of technical and behavioral questions.
+4. **Feedback:** Your responses are analyzed for keywords and sentiment.
 
 ---
 
 ## 🛠️ Tech Stack
-
-* **Framework:** [React.js](https://reactjs.org/)
-* **Build Tool:** [Vite](https://vitejs.dev/)
-* **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-* **AI Backend:** (e.g., OpenAI API / Gemini API / Groq)
-* **Deployment:** GitHub Pages
+- **Frontend:** React (Hooks, Context API)
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS
+- **AI Integration:** Google Gemini API / OpenAI API
+- **State Management:** LocalStorage for session persistence
 
 ---
 
 ## 🚀 Getting Started
 
-### Prerequisites
-
-* **Node.js:** v18.0.0 or higher
-* **npm:** Comes with Node.js
-
-### Installation & Local Setup
-
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/deepanshu2001/Portfolio.git](https://github.com/deepanshu2001/Portfolio.git)
-    cd Portfolio
-    ```
-
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
-
-3.  **Environment Configuration:**
-    Create a `.env` file in the root directory to store your API credentials:
-    ```env
-    VITE_AI_API_KEY=your_api_key_here
-    ```
-
-4.  **Start the development server:**
-    ```bash
-    npm run dev
-    ```
-    The app will be available at `http://localhost:5173`.
-
----
-
-## 📦 Deployment
-
-This project uses the `gh-pages` package for deployment. To push your latest changes to the live site, run:
-
-```bash
-npm run deploy
+### Installation
+1. Clone the repo:
+   ```bash
+   git clone [https://github.com/deepanshu2001/Portfolio.git](https://github.com/deepanshu2001/Portfolio.git)
