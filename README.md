@@ -591,9 +591,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Contact
 
-**Your Name** - [your.email@example.com](mailto:your.email@example.com)
+**Your Name** - [d.deepanshusharma12@gmail.com](mailto:d.deepanshusharma12@gmail.com)
 
-**Project Link**: [https://github.com/yourusername/ai-interview-platform](https://github.com/yourusername/ai-interview-platform)
+**Project Link**: [https://github.com/deepanshu2001/AI-Interview-APP](https://github.com/deepanshu2001/AI-Interview-APP)
 
 ---
 
