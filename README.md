@@ -6,7 +6,9 @@ A comprehensive full-stack application that leverages multiple AI models to prov
 [![React](https://img.shields.io/badge/React-18.0+-blue.svg)](https://reactjs.org/)
 [![Java](https://img.shields.io/badge/Java-17+-orange.svg)](https://www.oracle.com/java/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+## 🌐 Live Demo
 
+**Try it now:** [https://curious-caramel-ffc38a.netlify.app/](https://curious-caramel-ffc38a.netlify.app/)
 ## 📋 Table of Contents
 
 - [Features](#-features)
