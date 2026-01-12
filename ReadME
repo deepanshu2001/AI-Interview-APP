@@ -1,686 +1,189 @@
-<div align="center">
+# AI Interview APP
+[![Ask DeepWiki](https://devin.ai/assets/askdeepwiki.png)](https://deepwiki.com/deepanshu2001/AI-Interview-APP)
 
-# 🚀 AI-Powered Interview Preparation Platform
-
-### *Master Technical Interviews with Real-Time AI Feedback*
-
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2+-brightgreen?style=flat&logo=spring-boot)](https://spring.io/projects/spring-boot)
-[![React](https://img.shields.io/badge/React-18.0+-61DAFB?style=flat&logo=react)](https://reactjs.org/)
-[![Java](https://img.shields.io/badge/Java-17+-ED8B00?style=flat&logo=openjdk)](https://www.oracle.com/java/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-14+-316192?style=flat&logo=postgresql)](https://www.postgresql.org/)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-
-[Features](#-features) • [Demo](#-demo) • [Quick Start](#-quick-start) • [Documentation](#-documentation) • [Contributing](#-contributing)
-
-<img src="https://user-images.githubusercontent.com/placeholder/demo.gif" alt="Platform Demo" width="800"/>
-
-*Comprehensive interview preparation combining DSA coding challenges, behavioral assessments, and AI-powered feedback*
-
-</div>
-
----
-
-## 🎯 What is This?
-
-A **production-ready, full-stack platform** that simulates real technical interviews using cutting-edge AI models. Practice coding problems, answer behavioral questions, and receive instant, detailed feedback—just like interviewing at top tech companies.
-
-<table>
-<tr>
-<td width="50%">
-
-### 💻 For Candidates
-- **Realistic Practice**: 45-minute timed coding sessions
-- **Instant Feedback**: AI analyzes your code in seconds
-- **Voice Interviews**: Practice behavioral questions with audio
-- **Track Progress**: Comprehensive analytics dashboard
-- **Free to Use**: Open-source and self-hostable
-
-</td>
-<td width="50%">
-
-### 🏢 For Companies
-- **Automated Screening**: Reduce manual interview time
-- **Standardized Evaluation**: Consistent scoring system
-- **Scalable**: Handle hundreds of candidates
-- **Customizable**: Add your own problems
-- **Cost-Effective**: Self-hosted solution
-
-</td>
-</tr>
-</table>
-
----
+An AI-powered, full-stack platform designed to simulate realistic technical interviews. This application helps you master both Data Structures & Algorithms (DSA) and behavioral interviews by providing instant, detailed feedback from advanced AI models.
 
 ## ✨ Features
 
-<details open>
-<summary><b>🧠 DSA Coding Round</b></summary>
-<br>
-
-| Feature | Description |
-|---------|-------------|
-| 🎲 **Dynamic Problems** | AI generates unique LeetCode-style questions on demand |
-| ⚡ **Real-Time Evaluation** | Instant feedback on correctness, time & space complexity |
-| 📊 **Smart Scoring** | 1-10 scale across multiple dimensions (correctness, efficiency, code quality) |
-| ⏱️ **Timed Sessions** | Authentic 45-minute interview environment with pause/resume |
-| 💡 **Detailed Feedback** | Line-by-line analysis with optimization suggestions |
-| 🔄 **Problem Variety** | 85% diversity improvement with intelligent rotation |
-
-```javascript
-// Example Feedback Output
-{
-  "correctness": 9/10,
-  "timeComplexity": 8/10, // "Your O(n log n) solution is efficient"
-  "spaceComplexity": 7/10, // "Consider reducing space from O(n) to O(1)"
-  "feedback": "Excellent use of two-pointer technique..."
-}
-```
-
-</details>
-
-<details>
-<summary><b>🎤 Behavioral Interview Round</b></summary>
-<br>
-
-| Feature | Description |
-|---------|-------------|
-| 🎙️ **Voice Recording** | Natural audio-based responses (no typing required) |
-| 🤖 **AI Transcription** | OpenAI Whisper converts speech to text |
-| 📈 **5-Criteria Evaluation** | Communication, Leadership, Teamwork, Conflict Resolution, Situational Awareness |
-| 🎯 **STAR Method** | AI validates your responses follow best practices |
-| 📝 **Actionable Feedback** | Specific improvements for each dimension |
-
-**Sample Questions:**
-- *"Tell me about a time you disagreed with a teammate's technical decision"*
-- *"Describe a situation where you had to deliver bad news to stakeholders"*
-- *"How did you handle a project that was falling behind schedule?"*
-
-</details>
-
-<details>
-<summary><b>📊 Analytics & Progress Tracking</b></summary>
-<br>
-
-- **📈 Performance Trends**: Track improvement over time
-- **🎯 Weakness Identification**: AI highlights areas needing focus
-- **🏆 Achievement System**: Streaks, milestones, and gamification
-- **📉 Complexity Mastery**: See your understanding of Big-O notation improve
-- **📅 Interview History**: Review all past sessions and feedback
-
-</details>
-
-<details>
-<summary><b>🔐 Security & Enterprise Features</b></summary>
-<br>
-
-- ✅ JWT authentication with refresh tokens (7-day expiration)
-- ✅ BCrypt password encryption
-- ✅ Spring Security with custom UserDetailsService
-- ✅ CORS configuration for cross-origin requests
-- ✅ Protected API endpoints
-- ✅ Session persistence and recovery
-- ✅ Multi-device support
-
-</details>
-
----
-
-## 🎬 Demo
-
-### Screenshots
-
-<table>
-<tr>
-<td width="50%">
-<img src="https://via.placeholder.com/600x400/4A90E2/FFFFFF?text=DSA+Coding+Interface" alt="DSA Interface"/>
-<p align="center"><i>DSA Coding Interface with Real-Time Timer</i></p>
-</td>
-<td width="50%">
-<img src="https://via.placeholder.com/600x400/7B68EE/FFFFFF?text=AI+Feedback+Dashboard" alt="Feedback Dashboard"/>
-<p align="center"><i>Detailed AI Feedback with Complexity Analysis</i></p>
-</td>
-</tr>
-<tr>
-<td width="50%">
-<img src="https://via.placeholder.com/600x400/50C878/FFFFFF?text=Behavioral+Interview" alt="Behavioral Interview"/>
-<p align="center"><i>Voice-Based Behavioral Interview</i></p>
-</td>
-<td width="50%">
-<img src="https://via.placeholder.com/600x400/FF6B6B/FFFFFF?text=Analytics+Dashboard" alt="Analytics"/>
-<p align="center"><i>Performance Analytics & Progress Tracking</i></p>
-</td>
-</tr>
-</table>
-
-> **Note**: Replace placeholder images with actual screenshots by uploading images to `docs/images/` folder
-
----
+- **Dynamic DSA Challenges**: Get unique, LeetCode-style problems generated on-the-fly by AI for endless practice.
+- **AI-Powered Code Evaluation**: Submit your solution and receive an instant, in-depth analysis of:
+    - **Correctness (1-10)**: How well your code solves the problem, including edge cases.
+    - **Time Complexity (1-10)**: The efficiency of your algorithm's runtime.
+    - **Space Complexity (1-10)**: The efficiency of your algorithm's memory usage.
+    - **Detailed Feedback**: Constructive advice on optimization, alternative approaches, and code quality.
+- **Voice-Based Behavioral Interviews**: Practice answering common behavioral questions by recording your voice, simulating a natural interview environment.
+- **Comprehensive Behavioral Analysis**: Your audio responses are transcribed and evaluated on five key criteria:
+    - **Communication**: Clarity and structure of your response.
+    - **Situational Awareness**: Understanding of context and stakeholders.
+    - **Leadership Skills**: Demonstration of initiative and decision-making.
+    - **Teamwork Ability**: Emphasis on collaboration and support.
+    - **Conflict Resolution**: How you handle disagreements constructively.
+- **Personalized Dashboard**: Track your progress, including total interviews taken, and view past results to identify areas for improvement.
+- **Secure Authentication**: Built with Spring Security, using JWT for secure and persistent user sessions.
 
 ## 🛠️ Tech Stack
 
-<table>
-<tr>
-<td align="center" width="25%">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/spring/spring-original.svg" width="60"/>
-<br><b>Spring Boot</b>
-<br><sub>Backend Framework</sub>
-</td>
-<td align="center" width="25%">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" width="60"/>
-<br><b>React</b>
-<br><sub>Frontend Library</sub>
-</td>
-<td align="center" width="25%">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg" width="60"/>
-<br><b>PostgreSQL</b>
-<br><sub>Database</sub>
-</td>
-<td align="center" width="25%">
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" width="60"/>
-<br><b>Java 17</b>
-<br><sub>Programming Language</sub>
-</td>
-</tr>
-</table>
+| Area      | Technology                                                                                                    |
+| :-------- | :------------------------------------------------------------------------------------------------------------ |
+| **Backend**   | **Java 21**, **Spring Boot 3**, Spring Security, Spring AI, PostgreSQL, Maven, JWT                           |
+| **Frontend**  | **React 19**, **TypeScript**, Vite, Tailwind CSS, Lucide React                                                |
+| **AI Models** | **Groq (Llama 3.1)** for DSA/Behavioral evaluation & problem generation, **OpenAI (Whisper)** for audio transcription |
+| **Database**  | **PostgreSQL**                                                                                                |
+| **Deployment**| Docker, Netlify                                                                                               |
 
-### AI Models Integration
-
-| Model | Provider | Purpose | Performance |
-|-------|----------|---------|-------------|
-| 🦙 **LLaMA 3.1 (8B)** | Groq | Code evaluation & problem generation | Sub-2s response time |
-| 🎙️ **Whisper (large-v3)** | OpenAI | Audio transcription | 95%+ accuracy |
-| 🤖 **Claude Sonnet 4** | Anthropic | Alternative evaluation (optional) | High-quality feedback |
-
----
-
-## ⚡ Quick Start
+## 🚀 Getting Started
 
 ### Prerequisites
 
-```bash
-✅ Java 17+
-✅ Node.js 18+
-✅ PostgreSQL 14+
-✅ Maven 3.8+
-```
+- Java 21+
+- Node.js 18+
+- PostgreSQL 14+
+- Maven 3.8+
 
-### 🚀 One-Command Setup (Coming Soon)
+### 1. Clone the Repository
 
 ```bash
-# Clone and run with Docker Compose
-git clone https://github.com/yourusername/ai-interview-platform.git
-cd ai-interview-platform
-docker-compose up
+git clone https://github.com/deepanshu2001/AI-Interview-APP.git
+cd AI-Interview-APP
 ```
 
-### 📦 Manual Installation
+### 2. Backend Setup
 
-<details>
-<summary><b>Click to expand installation steps</b></summary>
+1.  **Navigate to the Backend directory:**
+    ```bash
+    cd Backend
+    ```
 
-#### 1️⃣ Clone Repository
+2.  **Create a PostgreSQL database.** For example, using `psql`:
+    ```sql
+    CREATE DATABASE ai_interview_app;
+    ```
 
-```bash
-git clone https://github.com/yourusername/ai-interview-platform.git
-cd ai-interview-platform
-```
+3.  **Configure environment variables.** Create a `.env` file in the `Backend` directory:
+    ```env
+    # Generate a secure key, e.g., with: openssl rand -base64 64
+    SECRET_KEY="your-super-secret-jwt-key"
 
-#### 2️⃣ Setup Backend
+    # Get your API key from https://console.groq.com/
+    GROK_API_KEY="your-groq-api-key"
+    ```
 
-```bash
-cd backend
+4.  **Update database credentials.** Open `src/main/resources/application.properties` and modify the `spring.datasource` properties to match your local PostgreSQL setup:
+    ```properties
+    spring.datasource.url=jdbc:postgresql://localhost:5432/ai_interview_app
+    spring.datasource.username=your_postgres_username
+    spring.datasource.password=your_postgres_password
+    ```
 
-# Create database
-createdb interview_platform
+5.  **Run the application:**
+    ```bash
+    ./mvnw spring-boot:run
+    ```
+    The backend will start on `http://localhost:8080`.
 
-# Configure environment
-cp src/main/resources/application.properties.example src/main/resources/application.properties
+### 3. Frontend Setup
 
-# Edit with your credentials
-nano src/main/resources/application.properties
-```
+1.  **Navigate to the Frontend directory:**
+    ```bash
+    cd ../Frontend
+    ```
 
-**application.properties:**
-```properties
-# Database
-spring.datasource.url=jdbc:postgresql://localhost:5432/interview_platform
-spring.datasource.username=your_username
-spring.datasource.password=your_password
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-# JWT Secret (generate with: node -e "console.log(require('crypto').randomBytes(64).toString('base64'))")
-SECRET_KEY=your_generated_secret_key
+3.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
+    The frontend will be available at `http://localhost:5173`.
 
-# API Keys
-spring.ai.openai.api-key=${OPENAI_API_KEY}
-spring.ai.groq.api-key=${GROQ_API_KEY}
-```
+## ⚙️ Architecture
 
-```bash
-# Build and run
-mvn clean install
-mvn spring-boot:run
-```
+The application follows a classic client-server architecture:
 
-✅ Backend running on `http://localhost:8080`
-
-#### 3️⃣ Setup Frontend
-
-```bash
-cd frontend
-
-# Install dependencies
-npm install
-
-# Configure environment
-cp .env.example .env
-nano .env
-```
-
-**.env:**
-```env
-VITE_API_URL=http://localhost:8080
-```
-
-```bash
-# Start development server
-npm run dev
-```
-
-✅ Frontend running on `http://localhost:5173`
-
-#### 4️⃣ Get API Keys
-
-| Service | Link | Cost |
-|---------|------|------|
-| Groq (LLaMA) | [console.groq.com](https://console.groq.com/) | Free tier available |
-| OpenAI (Whisper) | [platform.openai.com](https://platform.openai.com/) | Pay-as-you-go |
-| Anthropic (Optional) | [console.anthropic.com](https://console.anthropic.com/) | Free tier available |
-
-</details>
-
----
-
-## 📖 Documentation
-
-### API Endpoints
-
-<details>
-<summary><b>Authentication</b></summary>
-
-#### Register
-```http
-POST /api/user/register
-Content-Type: application/json
-
-{
-  "name": "John Doe",
-  "email": "john@example.com",
-  "password": "SecurePass123!"
-}
-```
-
-#### Login
-```http
-POST /api/user/login
-Content-Type: application/json
-
-{
-  "email": "john@example.com",
-  "password": "SecurePass123!"
-}
-```
-
-**Response:**
-```json
-{
-  "id": 1,
-  "name": "John Doe",
-  "email": "john@example.com",
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
-}
-```
-
-</details>
-
-<details>
-<summary><b>DSA Problem Generation</b></summary>
-
-```http
-GET /api/dsa-problem
-```
-
-**Response:**
-```json
-{
-  "title": "Two Sum",
-  "leetcodeUrl": "https://leetcode.com/problems/two-sum/",
-  "difficulty": "EASY",
-  "tags": "Array,Hash Table",
-  "problemStatement": "Given an array of integers nums and an integer target...",
-  "testCases": "Input: nums = [2,7,11,15], target = 9\nOutput: [0,1]"
-}
-```
-
-</details>
-
-<details>
-<summary><b>Code Evaluation</b></summary>
-
-```http
-POST /api/user/dsa-evaluation
-Authorization: Bearer <token>
-Content-Type: application/json
-
-{
-  "usercode": "class Solution {\n    public int[] twoSum(int[] nums, int target) {...}",
-  "userid": 1,
-  "problem": "Given an array of integers nums..."
-}
-```
-
-**Response:**
-```json
-{
-  "correctness": 9,
-  "timeComplexity": 10,
-  "spaceComplexity": 8,
-  "feedback": "Excellent solution! Your use of HashMap achieves O(n) time complexity..."
-}
-```
-
-</details>
-
-<details>
-<summary><b>Behavioral Interview</b></summary>
-
-#### Get Question
-```http
-GET /api/behavioralquestion
-```
-
-**Response:**
-```
-"Tell me about a time when you had to resolve a conflict within your team."
-```
-
-#### Submit Audio Response
-```http
-POST /api/user/behaviour
-Authorization: Bearer <token>
-Content-Type: multipart/form-data
-
-question: "Tell me about a time..."
-audio: <audio-file.webm>
-userId: 1
-```
-
-**Response:**
-```json
-{
-  "overallScore": 8.4,
-  "communication": 9,
-  "situationalAwareness": 8,
-  "leadershipSkills": 8,
-  "teamworkAbility": 9,
-  "conflictResolution": 8,
-  "overallFeedback": "Strong response demonstrating clear communication..."
-}
-```
-
-</details>
-
-### Architecture
+-   The **React Frontend** serves as the user interface, handling all user interactions, from coding in the editor to recording audio responses.
+-   The **Spring Boot Backend** provides a RESTful API for user management, interview session handling, and communication with external AI services.
+-   **Spring Security with JWT** handles user authentication and session management via secure HTTPOnly cookies.
+-   The **PostgreSQL Database** stores user data and interview results.
+-   **Spring AI** abstracts interactions with external AI models:
+    -   **Groq API (Llama 3.1)** is used for generating DSA problems and providing evaluations for both code and behavioral responses.
+    -   **OpenAI API (Whisper)** is used for high-accuracy audio-to-text transcription.
 
 ```mermaid
-graph TB
-    A[React Frontend] -->|REST API| B[Spring Boot Backend]
-    B -->|JPA/Hibernate| C[(PostgreSQL)]
-    B -->|HTTP| D[Groq API - LLaMA 3.1]
-    B -->|HTTP| E[OpenAI API - Whisper]
-    B -->|HTTP| F[Anthropic API - Claude]
-    
-    subgraph "Backend Services"
-        B --> G[DSA Evaluation Service]
-        B --> H[Behavioral Evaluation Service]
-        B --> I[User Management Service]
-        B --> J[JWT Authentication]
+graph TD
+    A[React Frontend <br> (localhost:5173)] -->|REST API| B(Spring Boot Backend <br> (localhost:8080));
+    B -->|JPA/Hibernate| C[(PostgreSQL Database)];
+    B -->|Spring AI| D[Groq API <br> (Llama 3.1)];
+    B -->|Spring AI| E[OpenAI API <br> (Whisper)];
+
+    subgraph User Actions
+        A_LOGIN[Login/Register]
+        A_DSA[Solve DSA Problem]
+        A_BEHAVIOR[Answer Behavioral Question]
     end
-    
-    subgraph "Frontend Components"
-        A --> K[DSA Round Page]
-        A --> L[Behavioral Round Page]
-        A --> M[Dashboard]
-        A --> N[Analytics]
+
+    A_LOGIN --> A;
+    A_DSA --> A;
+    A_BEHAVIOR --> A;
+
+    subgraph Backend Services
+        B_AUTH[Auth Service <br> (JWT)]
+        B_DSA[DSA Service]
+        B_BEHAVIOR[Behavioral Service]
     end
+
+    B --> B_AUTH;
+    B --> B_DSA;
+    B --> B_BEHAVIOR;
 ```
 
----
+## 🔐 API Endpoints
 
-## 📁 Project Structure
+The backend exposes the following REST API endpoints. Authenticated routes require a `jwt` cookie.
 
-```
-ai-interview-platform/
-│
-├── 📂 backend/
-│   ├── 📂 src/main/java/com/example/demo/
-│   │   ├── 📂 Configuration/
-│   │   │   ├── ChatClientConfig.java       # AI model beans
-│   │   │   ├── SecurityConfig.java         # Spring Security setup
-│   │   │   └── CorsConfig.java             # CORS configuration
-│   │   ├── 📂 Controllers/                 # REST endpoints
-│   │   ├── 📂 Services/                    # Business logic interfaces
-│   │   ├── 📂 ServiceImpl/                 # Service implementations
-│   │   ├── 📂 Entities/                    # JPA entities
-│   │   ├── 📂 Repositories/                # Data access layer
-│   │   ├── 📂 DTOS/                        # Data transfer objects
-│   │   └── 📂 Exceptions/                  # Custom exceptions
-│   └── pom.xml
-│
-├── 📂 frontend/
-│   ├── 📂 src/
-│   │   ├── 📂 components/                  # Reusable components
-│   │   ├── 📂 pages/                       # Route pages
-│   │   ├── 📂 context/                     # React Context (Auth)
-│   │   └── App.jsx
-│   ├── package.json
-│   └── vite.config.js
-│
-├── 📂 docs/                                # Documentation
-├── 📂 .github/workflows/                   # CI/CD pipelines
-├── docker-compose.yml
-├── README.md
-└── LICENSE
-```
+### Authentication
 
----
+-   **`POST /api/users/register`**: Create a new user account.
+    ```json
+    // Request Body
+    {
+      "name": "Jane Doe",
+      "email": "jane.doe@example.com",
+      "password": "strongpassword123"
+    }
+    ```
+-   **`POST /api/users/login`**: Log in and receive a `jwt` HTTPOnly cookie.
+    ```json
+    // Request Body
+    {
+      "email": "jane.doe@example.com",
+      "password": "strongpassword123"
+    }
+    ```
+-   **`POST /api/users/logout`**: Expire the user's session cookie.
+-   **`GET /api/users/me`**: (Authenticated) Get the current logged-in user's details.
 
-## 🚀 Deployment
+### Interview Rounds
 
-### Docker Deployment
+-   **`GET /api/dsa-problem`**: Fetches a random DSA problem from the AI model.
+-   **`POST /api/user/dsa-evaluation`**: (Authenticated) Submits a user's code for evaluation.
+    ```json
+    // Request Body
+    {
+      "usercode": "public class Solution { ... }",
+      "userid": 1,
+      "problem": "Problem statement text..."
+    }
+    ```
+-   **`GET /api/behavioralquestion`**: Fetches a random behavioral interview question.
+-   **`POST /api/user/behaviour`**: (Authenticated) Submits a recorded audio answer for a behavioral question.
+    -   **Content-Type**: `multipart/form-data`
+    -   **Fields**: `audio` (file), `question` (text), `userId` (number)
 
-```bash
-# Build images
-docker-compose build
+### User Data
 
-# Run containers
-docker-compose up -d
-
-# View logs
-docker-compose logs -f
-```
-
-### Cloud Platforms
-
-| Platform | Difficulty | Cost | Guide |
-|----------|-----------|------|-------|
-| 🔷 **Railway** | ⭐ Easy | Free tier | [Deploy Guide](#) |
-| 🟠 **Heroku** | ⭐⭐ Medium | $7/mo | [Deploy Guide](#) |
-| 🟡 **AWS** | ⭐⭐⭐ Advanced | Variable | [Deploy Guide](#) |
-| 🔵 **Google Cloud** | ⭐⭐⭐ Advanced | Variable | [Deploy Guide](#) |
-
----
-
-## 🤝 Contributing
-
-We love contributions! 🎉
-
-<details>
-<summary><b>How to Contribute</b></summary>
-
-1. **Fork** the repository
-2. **Create** a feature branch
-   ```bash
-   git checkout -b feature/AmazingFeature
-   ```
-3. **Commit** your changes
-   ```bash
-   git commit -m 'Add some AmazingFeature'
-   ```
-4. **Push** to the branch
-   ```bash
-   git push origin feature/AmazingFeature
-   ```
-5. **Open** a Pull Request
-
-### Contribution Ideas
-
-- 🎨 Improve UI/UX design
-- 🌐 Add internationalization (i18n)
-- 📊 Enhanced analytics features
-- 🧪 Write unit/integration tests
-- 📝 Improve documentation
-- 🐛 Fix bugs
-- ⚡ Performance optimizations
-
-</details>
-
----
-
-## 🐛 Troubleshooting
-
-<details>
-<summary><b>Common Issues & Solutions</b></summary>
-
-### Database Connection Failed
-```
-Error: org.postgresql.util.PSQLException: Connection refused
-```
-**Solution:** 
-- Verify PostgreSQL is running: `sudo service postgresql status`
-- Check credentials in `application.properties`
-
-### JWT Token Invalid
-```
-Error: JWT signature does not match
-```
-**Solution:** 
-- Regenerate SECRET_KEY: `node -e "console.log(require('crypto').randomBytes(64).toString('base64'))"`
-- Ensure key is base64-encoded and 256+ bits
-
-### CORS Error
-```
-Error: Access blocked by CORS policy
-```
-**Solution:** 
-- Add frontend URL to `CorsConfig.java`
-- Clear browser cache
-
-### Audio Upload Fails
-```
-Error: Maximum upload size exceeded
-```
-**Solution:**
-```properties
-# In application.properties
-spring.servlet.multipart.max-file-size=10MB
-spring.servlet.multipart.max-request-size=10MB
-```
-
-### LLM API Rate Limit
-```
-Error: 429 Too Many Requests
-```
-**Solution:**
-- Implement Redis caching
-- Upgrade API plan
-- Pre-generate problems in database
-
-</details>
-
----
-
-## 📊 Performance Metrics
-
-| Metric | Target | Current |
-|--------|--------|---------|
-| API Response Time | < 2s | ✅ 1.8s avg |
-| Problem Generation | < 3s | ✅ 2.5s avg |
-| Audio Transcription | < 5s | ✅ 4.2s avg |
-| Database Queries | < 100ms | ✅ 85ms avg |
-| Frontend Load Time | < 1s | ✅ 0.9s |
-
----
-
-## 🗺️ Roadmap
-
-- [x] DSA coding round with AI evaluation
-- [x] Behavioral interview with voice recognition
-- [x] User authentication and profiles
-- [x] Basic analytics dashboard
-- [ ] **Advanced analytics with ML insights** (Q2 2025)
-- [ ] **Real-time collaborative coding** (Q3 2025)
-- [ ] **Interview scheduling system** (Q3 2025)
-- [ ] **Company-specific problem sets** (Q4 2025)
-- [ ] **Mobile app (iOS/Android)** (Q4 2025)
-- [ ] **Video interview practice** (2026)
-
-See the [open issues](https://github.com/yourusername/ai-interview-platform/issues) for a full list of proposed features.
-
----
-
-## 📜 License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
----
-
-## 🙏 Acknowledgments
-
-Special thanks to:
-
-- [Spring AI](https://spring.io/projects/spring-ai) - AI integration framework
-- [Groq](https://groq.com/) - Lightning-fast LLaMA inference
-- [OpenAI](https://openai.com/) - Whisper transcription model
-- [Anthropic](https://anthropic.com/) - Claude language model
-- [LeetCode](https://leetcode.com/) - Problem inspiration
-- All our amazing [contributors](https://github.com/yourusername/ai-interview-platform/graphs/contributors)
-
----
-
-## 📞 Contact & Support
-
-<div align="center">
-
-### Questions? Issues? Ideas?
-
-[![GitHub Issues](https://img.shields.io/github/issues/yourusername/ai-interview-platform)](https://github.com/yourusername/ai-interview-platform/issues)
-[![GitHub Discussions](https://img.shields.io/github/discussions/yourusername/ai-interview-platform)](https://github.com/yourusername/ai-interview-platform/discussions)
-
-**Email:** your.email@example.com  
-**LinkedIn:** [Your Profile](https://linkedin.com/in/yourprofile)  
-**Twitter:** [@yourhandle](https://twitter.com/yourhandle)
-
-</div>
-
----
-
-<div align="center">
-
-### ⭐ Star this repo if you find it helpful!
-
-**Made with ❤️ by [Your Name](https://github.com/yourusername)**
-
-[Report Bug](https://github.com/yourusername/ai-interview-platform/issues) • [Request Feature](https://github.com/yourusername/ai-interview-platform/issues) • [Documentation](https://github.com/yourusername/ai-interview-platform/wiki)
-
-</div>
+-   **`GET /api/users/interview-details/{id}`**: (Authenticated) Get summary statistics for a user's interviews.
+-   **`GET /api/users/dsa-interviews/{id}`**: (Authenticated) Get all past DSA interview results for a user.
+-   **`GET /api/users/behavior-interviews/{id}`**: (Authenticated) Get all past behavioral interview results for a user.
